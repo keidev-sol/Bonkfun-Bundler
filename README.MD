@@ -58,7 +58,7 @@ Set these variables in your `.env` file:
 
 
 ## ⚡ Performance Tuning
-```ts
+
 ComputeBudgetProgram.setComputeUnitPrice({
   microLamports: 200_000, // High priority
 });

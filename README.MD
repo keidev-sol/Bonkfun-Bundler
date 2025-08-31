@@ -1,75 +1,74 @@
 # 🐶 Bonk.fun Multi-Wallet Bundle Trading Bot
-
-A fast and reliable Solana bundle trading bot for **bonkfun** and **bonk.fun**-style token launches. This bot uses **Jito bundles** to create tokens and execute **multi-wallet buys in a single atomic block**. Built with **Raydium SDK v2**, it's designed for seamless one-block execution and fast inclusion.
-
-## 🚀 Features
-
-- ✅ Supports **dynamic multi-wallet bundling** (12+ wallets)
-- ✅ Atomically creates tokens and buys from multiple wallets in **one block**
-- ✅ Uses **Jito** relayer for secure and efficient bundle submission
-- ✅ Executes trades via **Raydium SDK v2**
-- ✅ Optimized for priority compute unit pricing
-
+##
 ---
 
-## 📸 Sample Bundles on Jito Explorer
+## 🚀 Features
+- Dynamic multi-wallet bundling (2 → 50+ wallets)
+- Atomic one-block execution for token creation + buys
+- Jito relayer integration with MEV protection
+- Raydium SDK v2 swap execution
+- Priority compute unit pricing for faster confirmations
+- Modular and scalable codebase
+---
 
-These are just examples — the bot supports **any number of wallets**:
-
-| Wallet Count | Jito Bundle                                                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------ |
-| 2 Wallets    | [🔗 View](https://explorer.jito.wtf/bundle/56ac378f193c9b90a4b6d2c52096a2d783653f300c343d59976691b2a6fcb184) |
-| 9 Wallets    | [🔗 View](https://explorer.jito.wtf/bundle/8116172ad6bea279b6873020ac412eb36c9777b311b96ab38c58204637166bf1) |
-| 12 Wallets   | [🔗 View](https://explorer.jito.wtf/bundle/eb6d075d4f3e065d5e127ec76c328e00e08d3608ee858a15fa13a21c8f922d98) |
-
+## 📸 Sample Bundles (Jito Explorer)
+| Wallets | Example |
+| ------: | :------ |
+| 2 | [🔗 View](https://explorer.jito.wtf/bundle/56ac378f193c9b90a4b6d2c52096a2d783653f300c343d59976691b2a6fcb184) |
+| 9 | [🔗 View](https://explorer.jito.wtf/bundle/8116172ad6bea279b6873020ac412eb36c9777b311b96ab38c58204637166bf1) |
+| 12 | [🔗 View](https://explorer.jito.wtf/bundle/eb6d075d4f3e065d5e127ec76c328e00e08d3608ee858a15fa13a21c8f922d98) |
 ---
 
 ## ⚙️ How It Works
+1. Create token (BONK-style)
+2. Prepare swap transactions across multiple wallets
+3. Bundle into a single atomic block
+4. Submit via Jito relayer
+5. Confirm all-or-nothing execution
+---
 
-1. Creates a new token (like BONK)
-2. Prepares swap transactions from multiple wallets
-3. Wraps them into a **single atomic bundle** using Jito
-4. Submits the bundle for inclusion in the same block
+## ⚙️ Configuration
+Set these variables in your `.env` file:
+
+`PRIVATE_KEY, RPC_ENDPOINT, TOKEN_NAME, TOKEN_SYMBOL, DESCRIPTION, TOKEN_SHOW_NAME, TOKEN_CREATE_ON, TWITTER, TELEGRAM, WEBSITE, FILE, VANITY_MODE, SWAP_AMOUNT, DISTRIBUTION_WALLETNUM, JITO_FEE, BUYER_WALLET, BUYER_AMOUNT`
+
+➡️ See `constants/constants.ts` for the full list and details.
+---
+
+## 🛠️ Scripts & Usage
+| Action | Yarn Command | npm Command | Description |
+| ------ | ------------ | ----------- | ----------- |
+| Start main process | `yarn start` | `npm run start` | Token creation, distribution, automation |
+| Gather & close wallets | `yarn gather` | `npm run gather` | Collect funds, close wallets |
+| Close LUTs | `yarn close` | `npm run close` | Close address lookup tables |
+| Check status | `yarn status` | `npm run status` | Wallet & transaction status |
+---
+
+## 🗂️ Project Structure
+- **index.ts** — Main entry (token creation, distribution, automation)  
+- **src/** — Core logic & utilities  
+- **gather.ts** — Gather/close wallets  
+- **closeLut.ts** — Close LUTs  
+- **status.ts** — Status checks  
+- **constants/** — Environment & constants  
+- **executor/** — Transaction execution (Jito/legacy)  
+- **utils/** — Helper functions  
 
 ---
 
-## 🛠 Tech Stack
-
-- [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/)
-- [Raydium SDK v2](https://github.com/raydium-io/raydium-sdk)
-- [Jito-Solana](https://jito.network/)
-- Custom bundler and transaction coordinator
-
----
 
 ## ⚡ Performance Tuning
-
-Boost confirmation speed by adjusting compute unit pricing:
-
 ```ts
-ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 200_000 }); // High priority
-```
-
-Use higher values during congestion, or lower for savings.
-
----
-
-## 🧪 Planned Features
-
-- Auto-retry on bundle failure
-- Live bundle result dashboard
-- Strategy modules for flexible launch styles
-- Telegram / Discord alerts
+ComputeBudgetProgram.setComputeUnitPrice({
+  microLamports: 200_000, // High priority
+});
 
 ---
 
-## 📬 Contact
+## 📬 Contact  
+For **MEV bot consulting, custom strategy development, or private collaboration**, feel free to connect.  
 
-For MEV bot customization, consulting, or private collaboration:
-**Open an issue** or reach out via Discord/Telegram (on request).
-
-**Telegram**: [@Tru3B1iss](https://t.me/Tru3B1iss)
-**X (Twitter)**: [@XTruebliss](https://x.com/XTruebliss)
-**Discord**: [@trueb1iss](https://discord.com/users/1274339638668038187)
+- **Telegram** → [@Kei Novak](https://t.me/Kei4650)
+- **X (Twitter)** → [@Kei Novak](https://x.com/kei_4650)  
 
 ---
